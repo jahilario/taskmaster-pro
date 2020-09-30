@@ -56,7 +56,7 @@ $(".list-group").on("click", "p", function () {
   textInput.trigger("focus");
 });
 
-$(".list-group").on("blur", "textarea", function () {
+$(".list-group").on("change", "input[type='text']", function() {
   // get the textarea's current value/text
   var text = $(this)
     .val()
@@ -98,6 +98,11 @@ $(".list-group").on("click", "span", function () {
 
   //swap out elements
   $(this).replaceWith(dateInput);
+
+  //enable ui datepicker
+  dateInput.datepicker({
+    minDate: 1
+  })
 
   //automatically focus on new element
   dateInput.trigger("focus");
@@ -166,6 +171,10 @@ $("#trash").droppable({
   out: function(event, ui) {
     console.log("out");
   }
+});
+
+$("#modalDueDate").datepicker({
+  minDate: 1
 });
 
 
